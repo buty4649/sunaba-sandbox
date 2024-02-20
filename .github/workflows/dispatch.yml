@@ -19,7 +19,4 @@ jobs:
       - name: Run gh command
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          gh api repos/buty4649/homebrew-tap/dispatches \
-            --method POST \
-            --field event_type=update --field client_payload='{"ref":"main"}'
+        run: gh api repos/buty4649/homebrew-tap/dispatches -f event_type=update
