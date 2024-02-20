@@ -16,7 +16,13 @@ jobs:
           private-key: ${{ secrets.WORKFLOW_KICKER_PRIVATE_KEY }}
           owner: buty4649
           repositories: homebrew-tap
-      - name: Run gh command
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: gh api repos/buty4649/homebrew-tap/dispatches -f event_type=update
+      - uses: actions/github-script@v7
+        with:
+          github-token: ${{ steps.app-token.outputs.token }}
+          script: |
+            await github.rest.actions.createWorkflowDispatch({
+              owner: 'buty4649',
+              repo: 'homebrew-tap',
+              workflow_id: 'update.yml',
+              ref: 'main'
+            })
