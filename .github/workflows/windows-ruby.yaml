@@ -10,3 +10,5 @@ jobs:
       - run: ruby --version
       - run: bundle version
       - run: gcm ruby
+      - uses: actions/checkout@v4
+      - run: bundle install
