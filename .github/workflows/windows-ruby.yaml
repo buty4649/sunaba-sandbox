@@ -8,3 +8,5 @@ jobs:
     runs-on: windows-latest
     steps:
       - run: ruby --version
+      - run: bundle version
+      - run: gcm ruby
