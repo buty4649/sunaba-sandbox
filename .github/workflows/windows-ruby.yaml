@@ -11,4 +11,6 @@ jobs:
       - run: bundle version
       - run: gcm ruby
       - uses: actions/checkout@v4
-      - run: bundle install
+      - run: |
+        gem install bundler:2.5.11
+        bundle install
